@@ -2,10 +2,10 @@
 {'action': 'MoveJ', 'value': {'joint1': -58.10, 'joint2': 25.75, 'joint3': 27.17, 'joint4': -63.59, 'joint5': -71.41, 'joint6': 77.67}, 'speed': 1.0}
 {'action': 'MoveL', 'value': {'movex': 0.45455, 'movey': 0.9992045, 'movez': 0.47058}, 'speed': 1.0}
 {'action': 'MoveL', 'value': {'movex': 0.0, 'movey': 0.0, 'movez': -0.1}, 'speed': 1.0}
-{'action': 'Attach', 'value': {'object': 'pencil', 'endeffector': 'EE_egp64'}}
+{'action': 'Attach', 'value': {'object': 'apple', 'endeffector': 'EE_egp64'}}
 {'action': 'MoveL', 'value': {'movex': 0.00, 'movey': 0.0, 'movez': 0.1}, 'speed': 1.0}
 {'action': 'MoveL', 'value': {'movex': 1.54545, 'movey': 0.9507954999999999, 'movez': 1.62942}, 'speed': 1.0}
 {'action': 'MoveL', 'value': {'movex': 0.0, 'movey': 0.0, 'movez': -0.1}, 'speed': 1.0}
-{'action': 'Detach', 'value': {'object': 'pencil'}}
+{'action': 'Detach', 'value': {'object': 'apple'}}
 {'action': 'MoveL', 'value': {'movex': 0.00, 'movey': 0.0, 'movez': 0.1}, 'speed': 1.0}
 {'action': 'MoveJ', 'value': {'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0, 'joint5': 0.0, 'joint6': 0.0}, 'speed': 1.0}
