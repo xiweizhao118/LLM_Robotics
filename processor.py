@@ -29,7 +29,8 @@ class action_module(object):
 
     def pre_grasp_module(obj,ee):
         # Pre-grasp (0.1 (z-axis) above the object)
-        string = f"{{'action': 'MoveL', 'value': {{'movex': {obj.x-ee.x}, 'movey': {obj.y-ee.y}, 'movez': {obj.z-ee.z+0.1}}}, 'speed': 1.0}}"
+        # string = f"{{'action': 'MoveL', 'value': {{'movex': {obj.x-ee.x}, 'movey': {obj.y-ee.y}, 'movez': {obj.z-ee.z+0.1}}}, 'speed': 1.0}}"
+        string = r"{'action': 'MoveL', 'value': {'movex': 0.06, 'movey': 0.0, 'movez': -0.1}, 'speed': 1.0}"
         ee.x = obj.x-ee.x
         ee.y = obj.y-ee.y
         ee.z = obj.z-ee.z+0.1
@@ -39,6 +40,10 @@ class action_module(object):
         # Grasp (this sets the values to be inside the object?)
         string = r"{'action': 'MoveL', 'value': {'movex': 0.0, 'movey': 0.0, 'movez': -0.1}, 'speed': 1.0}"
         ee.z = ee.z - 0.1
+        return string
+    
+    def put_down_module():
+        string = r"{'action': 'MoveL', 'value': {'movex': 0.0, 'movey': 0.0, 'movez': -0.09}, 'speed': 1.0}"
         return string
     
     def attach_module(obj):
@@ -63,11 +68,16 @@ class action_module(object):
     def open_module():
         return r"{'action': 'GripperOpen'}" #Don't need a test
     
-    def above_new_position(ee,x,y,z):
-        string = f"{{'action': 'MoveL', 'value': {{'movex': {x-ee.x}, 'movey': {y-ee.y}, 'movez': {z-ee.z+0.1}}}, 'speed': 1.0}}"
-        ee.x = x-ee.x
-        ee.y = y-ee.y
-        ee.z = z-ee.z+0.1
+    def above_new_position():
+        # string = f"{{'action': 'MoveL', 'value': {{'movex': {x-ee.x}, 'movey': {y-ee.y}, 'movez': {z-ee.z+0.1}}}, 'speed': 1.0}}"
+        string = r"{'action': 'MoveJ', 'value': {'joint1': 50.30, 'joint2': 31.26, 'joint3': 18.75, 'joint4': 57.55, 'joint5': -65.78, 'joint6': 12.14}, 'speed': 0.05}"
+        # ee.x = x-ee.x
+        # ee.y = y-ee.y
+        # ee.z = z-ee.z+0.1
+        return string
+    
+    def move_to_start():
+        string = r"{'action': 'MoveL', 'value': {'movex': -0.06, 'movey': 0.0, 'movez': 0.09}, 'speed': 1.0}"
         return string
 
 def generate_instruction_set(instructions, save_file):
@@ -85,28 +95,35 @@ def generate_instruction_set(instructions, save_file):
             #pregrasp
             action_list.append(model.pre_grasp_module(target_object,obj_dic['ee']))
             #grasp
-            action_list.append(model.move_down_module(obj_dic['ee']))
+            # action_list.append(model.move_down_module(obj_dic['ee']))
             #attach
             action_list.append(model.attach_module(target_object))
+            #close grisper
+            action_list.append(model.close_module())
             #moveup
             action_list.append(model.move_up_module(obj_dic['ee']))
             #newlocation
-            if location['precise'] == 'True':
-                # Precise location logic here:
-                ""
-            else: # Not precise:
-                if location['relation'] == 'None':
-                    result = move_with_respect_to(target_object, location['direction'], distance_to_float(location['distance']))
-                    action_list.append(result[0])
-                    action_list.append(result[1])
-                else: #We have to move in relation to the other object (location['relation'])
-                    result = move_with_respect_to(obj_dic[location['relation']], location['direction'], distance_to_float(location['distance']))
-                    action_list.append(result[0])
-                    action_list.append(result[1])
+            action_list.append(model.above_new_position())
+            # if location['precise'] == 'True':
+            #     # Precise location logic here:
+            #     ""
+            # else: # Not precise:
+            #     if location['relation'] == 'None':
+            #         result = move_with_respect_to(target_object, location['direction'], distance_to_float(location['distance']))
+            #         action_list.append(result[0])
+            #         action_list.append(result[1])
+            #     else: #We have to move in relation to the other object (location['relation'])
+            #         result = move_with_respect_to(obj_dic[location['relation']], location['direction'], distance_to_float(location['distance']))
+            #         action_list.append(result[0])
+            #         action_list.append(result[1])
+            #put down
+            action_list.append(model.put_down_module())
+            action_list.append(model.open_module())
             #detach
             action_list.append(model.detach_module(target_object))
             #init
-            action_list.append(model.move_up_module(obj_dic['ee']))
+            # action_list.append(model.move_up_module(obj_dic['ee']))
+            action_list.append(model.move_to_start())
             action_list.append(model.initial_module())
         case 'some other action': 
             ""# This is a place-holder for future tasks, but a similar implementation would made here as above
@@ -221,6 +238,8 @@ def processor(items_instruction, move_instruction):
     obj_dic['ee'] = ee
 
     # Now let's generate instruction based on the above instructions:
-    generate_instruction_set(move_instruction, 'test_file1.txt')
+    generate_instruction_set(move_instruction, 'action_file.txt')
+    ros2instruction = '''ros2 run ros2_execution ros2_execution.py --ros-args -p PROGRAM_FILENAME:="action_file" -p ROBOT_MODEL:="irb120" -p EE_MODEL:="schunk"'''
+    return ros2instruction
 
     # ros2_command = '''ros2 run ros2_grasping spawn_object.py --package "ros2_grasping" --urdf "apple.urdf" --name "apple" --x 1.0 --y -2.0 --z 0.0'''

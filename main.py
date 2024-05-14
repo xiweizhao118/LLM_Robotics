@@ -1,9 +1,9 @@
 import subprocess
 import openai, json
 from processor import processor
-model_id = 'model-id-here'
-input_model_id = 'input-model-id-here'
-openai.api_key = 'my_openai_api_key_here'
+model_id = 'model-id'
+input_model_id = 'input-model-id'
+openai.api_key = 'openai-api'
 
 def user_place_items():
     '''
@@ -35,8 +35,8 @@ def user_place_items():
     # print(command)
 
     # NOTE: The following code is used to run terminal commands
-    # for c in command:
-    #     run_terminal_command(c)
+    for c in command:
+        run_terminal_command(c)
     return command[1:]
 
 
@@ -80,7 +80,9 @@ def main():
     # Get user input and record
     move_instructions_dic = user_language_demands()
     # Process the instructions
-    processor(items_setup_instructions_list, move_instructions_dic)
+    instruction = processor(items_setup_instructions_list, move_instructions_dic)
+    run_terminal_command(instruction)
+    # print(instruction)
 
 
 if __name__ == "__main__":
