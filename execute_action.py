@@ -42,8 +42,8 @@ def main():
         if user_input == "exit":
             break
         command = f'''ros2 run ros2_execution ros2_execution.py --ros-args -p PROGRAM_FILENAME:="{item_name}" -p ROBOT_MODEL:="irb120" -p EE_MODEL:="schunk"'''
-        # run_terminal_command(command)
-        print(command)
+        run_terminal_command(command)
+        # print(command)
         print("Task completed successfully!")
     
     print("Goodbye!")
