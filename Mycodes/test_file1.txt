@@ -1,11 +1,11 @@
 {'action': 'MoveJ', 'value': {'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0, 'joint5': 0.0, 'joint6': 0.0}, 'speed': 1.0}
 {'action': 'MoveJ', 'value': {'joint1': -58.10, 'joint2': 25.75, 'joint3': 27.17, 'joint4': -63.59, 'joint5': -71.41, 'joint6': 77.67}, 'speed': 1.0}
-{'action': 'MoveL', 'value': {'movex': 0.45455, 'movey': 0.9992045, 'movez': -0.52942}, 'speed': 1.0}
-{'action': 'MoveL', 'value': {'movex': 0.0, 'movey': 0.0, 'movez': -0.1}, 'speed': 1.0}
+{'action': 'MoveJ', 'value': {'joint1': 43.02891256830146, 'joint2': 100.81619682301601, 'joint3': -76.95003465612523, 'joint4': -87.36089263291905, 'joint5': -42.58590385714491, 'joint6': 70.90487598966016}, 'speed': 1.0}
+{'action': 'MoveL', 'value': {'movex': 0.0, 'movey': 0.0, 'movez': -0.01}, 'speed': 1.0}
 {'action': 'Attach', 'value': {'object': 'cup', 'endeffector': 'EE_egp64'}}
-{'action': 'MoveL', 'value': {'movex': 0.00, 'movey': 0.0, 'movez': 0.1}, 'speed': 1.0}
-{'action': 'MoveL', 'value': {'movex': 0.54545, 'movey': -0.8992045000000001, 'movez': 0.62942}, 'speed': 1.0}
-{'action': 'MoveL', 'value': {'movex': 0.0, 'movey': 0.0, 'movez': -0.1}, 'speed': 1.0}
+{'action': 'MoveL', 'value': {'movex': 0.00, 'movey': 0.0, 'movez': 0.01}, 'speed': 1.0}
+{'action': 'MoveJ', 'value': {'joint1': 4.3464552051898355, 'joint2': 101.97357330627312, 'joint3': -76.9496257447128, 'joint4': 21.864257288059495, 'joint5': 63.31037653316297, 'joint6': -94.97843986254796}, 'speed': 1.0}
+{'action': 'MoveL', 'value': {'movex': 0.0, 'movey': 0.0, 'movez': -0.01}, 'speed': 1.0}
 {'action': 'Detach', 'value': {'object': 'cup'}}
-{'action': 'MoveL', 'value': {'movex': 0.00, 'movey': 0.0, 'movez': 0.1}, 'speed': 1.0}
+{'action': 'MoveL', 'value': {'movex': 0.00, 'movey': 0.0, 'movez': 0.01}, 'speed': 1.0}
 {'action': 'MoveJ', 'value': {'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0, 'joint5': 0.0, 'joint6': 0.0}, 'speed': 1.0}
