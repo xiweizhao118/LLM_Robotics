@@ -16,7 +16,7 @@ This repo contains code for generating the actions file (which can be executed d
 | Extracted language processor  | processor.py | Return the final actions file based on the extracted keywords which is returned by the fine-tuned GPT model. |
 | Actions file example | action_file.txt | An example file to show the general format of the actions file. |
 | Sub-task 1: Items setup | items_setup.py | A prompt step is included to record the user's requirements. Execute items setup tasks automatically. |
-| Sub-task 1: Execute actions | execute_action.py | A prompt step is included to record the user's requirements. Execute item movement tasks automatically. |
+| Sub-task 2: Execute actions | execute_action.py | A prompt step is included to record the user's requirements. Execute item movement tasks automatically. |
 | main file  | main.py | A combined version of the two sub-tasks. |
 
 ## About Fine tuning
