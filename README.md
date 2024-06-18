@@ -1,4 +1,4 @@
-__Here is the integrated main module which generates the final action file.txt__
+### Here is the integrated main module which generates the final action file.txt
 
 Embedded modules:
 - User place items:
