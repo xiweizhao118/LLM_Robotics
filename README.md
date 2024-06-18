@@ -1,7 +1,7 @@
 # Robots That Understand: Integrating Large Language Models In Robotics
 This repo contains code for generating the actions file (which can be executed directly in the simulator). Two fine-tuned language models based on GPT-3.5 Turbo are implemented to understand the user's requirements of items set-up information and the task. The simulator is based on [ros2_RobotSimulation](https://github.com/IFRA-Cranfield/ros2_RobotSimulation/tree/humble).
 
-![Our workflow]([https://drive.google.com/file/d/1_JtB_9LD62BU3rMrRhmS2tX3X83i3_3r/view?usp=drive_link](https://drive.google.com/file/d/1_JtB_9LD62BU3rMrRhmS2tX3X83i3_3r/view?usp=sharing))
+![Our workflow](poster.png)
 
 ## How to run?
 - Open 'main.py' and type our models' ID and your personal OpenAI API key.
@@ -34,5 +34,5 @@ For the keywords extraction tasks, here is an example of how our fine-tuned GPT 
 
 ```
 
-### Demonstration video
+## Demonstration video
 [![Our demonstrations video](https://res.cloudinary.com/marcomontalbano/image/upload/v1718732737/video_to_markdown/images/youtube--3EzFYXBpsSE-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/3EzFYXBpsSE?si=V-hbhVmwLJq0CD58 "Our demonstrations video")
